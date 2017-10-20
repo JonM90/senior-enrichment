@@ -4,9 +4,7 @@ import axios from 'axios';
 export default class AddCampus extends Component {
   constructor() {
     super()
-    this.state = {
-      //newCampus: {}
-    }
+    this.state = {}
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.addCampus = this.addCampus.bind(this);
@@ -26,7 +24,6 @@ export default class AddCampus extends Component {
   handleChange(e) {
     const name = e.target.name;
     const val = e.target.value;
-
     this.setState({ [name]: val })
   }
 

@@ -63,14 +63,25 @@
 }
 
 header {
+  color: rgba(16, 228, 201, 0.79);
   background-color: rgba(162, 3, 45, 0.69);
 }
 
 #main {
-  color: rgba(32, 203, 189, 0.54);
-  background-color: rgba(2, 10, 21, 0.60);
+  color: rgba(16, 228, 201, 0.79);
+  background-color: rgba(14, 54, 105, 0.74);
+  height: 100vh;
 }
 
-.a {
+a {
+  color: #5CE2FF;
   text-decoration: none;
+}
+
+i {
+  color: rgba(16, 228, 201, 0.79);
+}
+
+.hidden {
+  display: none;
 }

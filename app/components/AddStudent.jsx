@@ -4,7 +4,6 @@ import axios from 'axios';
 export default class AddStudent extends Component {
   constructor(props) {
     super(props)
-    //Diff btw this.props & props: ABSOLUTELY NOTHING
     this.state = { student: {}, campusChoice: []}
 
     this.fetchCampuses = this.fetchCampuses.bind(this);
@@ -23,7 +22,6 @@ export default class AddStudent extends Component {
     .then(campusChoice => {
       //console.log('data from promise:', campusChoice)
       this.setState( {campusChoice} )
-      //return campusChoice
       console.log('In fetchCampuses, updated state:', this.state)
     })
   }
@@ -81,7 +79,6 @@ export default class AddStudent extends Component {
       this.setState({ student });
       console.log('Axios editStudent:', student)
       console.log('updated state:', this.state);
-      //console.log('window.location', location);
       location.replace( `/students/${id}` )
     })
   }

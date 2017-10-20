@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-//import AddCampus from './AddCampus';
-//import AddStudent from './AddStudent';
 import axios from 'axios';
 
 export default class Campuses extends Component {
   constructor(props) {
     super(props)
-    this.state = { campuses: [] }
+    this.state = { campuses: [], deleteModeOn: false }
 
     this.fetchCampuses = this.fetchCampuses.bind(this);
+    this.deleteMode = this.deleteMode.bind(this);
     this.removeCampus = this.removeCampus.bind(this);
     this.handleRemoval = this.handleRemoval.bind(this);
   }
@@ -18,6 +17,18 @@ export default class Campuses extends Component {
     axios.get('/api/campuses')
     .then(res => res.data)
     .then( campuses => this.setState({campuses}) )
+  }
+
+  deleteMode(e) {
+    console.log('About to delete these money-guzzlers');
+    //renders delete buttons
+    this.setState({deleteModeOn: !this.state.deleteModeOn})
+  }
+
+  handleRemoval(e) {
+    const id = e.target.id
+    this.removeCampus(id)
+    e.preventDefault()
   }
 
   removeCampus(id) {
@@ -29,12 +40,6 @@ export default class Campuses extends Component {
     .then(data => {
       this.fetchCampuses();
     })
-  }
-
-  handleRemoval(e) {
-    const id = e.target.id
-    this.removeCampus(id)
-    e.preventDefault()
   }
 
   componentDidMount() {
@@ -56,14 +61,22 @@ export default class Campuses extends Component {
           campuses && fromCampuses ?
           ( <div>
               <h2>Active Campuses:</h2>
-              <button title="Add Campus">
               <Link id="add-Campus" to={'/campuses/addCampus'}>
-                <i className="material-icons">add_location</i>
-                <i className="material-icons">school</i>
+                <button title="Add Campus">
+                  <i className="material-icons">add_location</i>
+                  <i className="material-icons">school</i>
+                </button>
               </Link>
+              <button title="Toggle Deletion" onClick={this.deleteMode}>
+                <a href="#"><i className="material-icons">delete</i></a>
               </button>
               <div>
-                {campuses.map(campus => (<div key={campus.id}> <Link to={`/campuses/${campus.id}`}> {campus.name} </Link> <Link to="#"><i id={campus.id} onClick={this.handleRemoval} title="Remove Campus" className="material-icons md-18">remove_circle</i></Link> </div>))}
+                {campuses.map(campus => (<div key={campus.id}> <Link to={`/campuses/${campus.id}`}> {campus.name} </Link>
+                  {this.state.deleteModeOn ?
+                    <Link to="#">
+                    <i id={campus.id} onClick={this.handleRemoval} title="Remove Campus" className="material-icons md-18">remove_circle</i>
+                  </Link> : null}
+                </div>))}
               </div>
             </div>) : campuses &&
           (<div>

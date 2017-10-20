@@ -8,7 +8,6 @@ export default class SingleCampus extends Component {
   constructor() {
     super();
     this.state = { campus: {} }
-
     this.fetchLocalInfo = this.fetchLocalInfo.bind(this);
   }
 
@@ -33,11 +32,10 @@ export default class SingleCampus extends Component {
     console.log('SINGLECAMP BEING RENDERED!')
     return (
       <div>
-        <span> <Link to={`/campuses/${campus.id}/edit`} title="Edit Campus">
+        <div className="flex"> <Link to={`/campuses/${campus.id}/edit`} title="Edit Campus">
           <i className="material-icons">settings</i>
           <i className="material-icons">build</i>
-        </Link> </span>
-        <h2>{campus.name}</h2>
+        </Link> <h2>{campus.name}</h2> </div>
         <img src={campus.image} />
         <Students passedProps={propCopy} />
       </div>

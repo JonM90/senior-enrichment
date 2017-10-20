@@ -6,7 +6,6 @@ import { Provider } from 'react-redux'
 import store from './store'
 import Root from './components/Root'
 import Main from './components/Main'
-
 //{
 //<Provider store={store}>
 // <Main />
@@ -14,7 +13,7 @@ import Main from './components/Main'
 // </Provider>
 //}
 
-render (
+render(
   <Main />,
   document.getElementById('main')
 )
