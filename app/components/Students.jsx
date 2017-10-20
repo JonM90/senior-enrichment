@@ -66,7 +66,6 @@ export default class Campuses extends Component {
   }
 
   handleExpulsion(e) {
-    //Is prevent needed since this isn't a submit?
     e.preventDefault()
     const id = +e.target.id
     this.removeStudent(id)
@@ -75,14 +74,8 @@ export default class Campuses extends Component {
   removeStudent(id) {
     console.log('Rmvng stud with id:', id);
     axios.delete(`/api/students/${id}`)
-    .then(res => {
-      console.log('removeStudent res', res)
-      return res.data
-    })
-    .then( data => {
-      console.log('removeStudent res.data', data)
-      this.whichFetch()
-    })
+    .then(res => res.data)
+    .then( () => this.whichFetch())
   }
 
   render() {
@@ -91,7 +84,7 @@ export default class Campuses extends Component {
       let lowers = student.name.toLowerCase()
       return lowers.match(this.state.form)
     });
-    console.log('STUDENTS BEING RENDERED!', 'this.state.form:', this.state.form, 'matches:', matches)
+
     return (
       <div>
         <h2>Enrolled Students:</h2>

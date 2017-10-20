@@ -12,24 +12,18 @@ export default class SingleCampus extends Component {
   }
 
   fetchLocalInfo(campusId) {
-    console.log('fetching local info with id:', campusId);
     axios.get(`/api/campuses/${campusId}`)
-    .then(res => {
-      console.log('in fetchLocalInfo axios.get.then, res:', res)
-      return res.data
-    })
+    .then(res => res.data)
     .then( campus => this.setState({campus}) )
   }
 
   componentDidMount() {
-    console.log('SingleCamp component access, this.props', this.props)
     this.fetchLocalInfo(this.props.match.params.campusId)
   }
 
   render() {
     const campus = this.state.campus;
     const propCopy = Object.assign({}, this.props)
-    console.log('SINGLECAMP BEING RENDERED!')
     return (
       <div>
         <div className="flex"> <Link to={`/campuses/${campus.id}/edit`} title="Edit Campus">

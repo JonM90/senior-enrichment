@@ -1,4 +1,3 @@
-//import Sequelize from 'sequelize';
 const Sequelize = require('sequelize');
 const db = require('../index');
 const Campus = require('./campus');
@@ -31,5 +30,4 @@ const Student = db.define('student', {
   }
 })
 
-//export default Student;
 module.exports = Student;

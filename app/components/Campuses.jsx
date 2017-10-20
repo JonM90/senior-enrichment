@@ -33,13 +33,8 @@ export default class Campuses extends Component {
 
   removeCampus(id) {
     axios.delete(`/api/campuses/${id}`)
-    .then(res => {
-      console.log('In removeCampus axios.delete, res', res)
-      return res.data;
-    })
-    .then(data => {
-      this.fetchCampuses();
-    })
+    .then(res => res.data)
+    .then(() => this.fetchCampuses())
   }
 
   componentDidMount() {
@@ -47,13 +42,11 @@ export default class Campuses extends Component {
   }
 
   render() {
-    console.log('in campuses RENDER, this.props:', this.props)
     const myProps = this.props.match ? this.props : this.props.passedProps;
     const lastPath = myProps.match.url;
     const fromCampuses = lastPath.includes('campuses');
 
     const campuses = fromCampuses ? this.state.campuses : this.props.campus
-    console.log('in Campuses RENDER, fromCampuses?', fromCampuses, 'campuses:', campuses)
 
     return (
       <div>

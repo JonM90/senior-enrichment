@@ -13,10 +13,7 @@ export default class EditStudent extends Component {
     const editId = this.props.match.params.studentId
     axios.get(`/api/students/${editId}`)
     .then(res => res.data)
-    .then(student => {
-      console.log('fetchStudInfo, student:', student)
-      this.setState({ student })
-    })
+    .then( student => this.setState({ student }) )
   }
 
   componentDidMount() {
@@ -25,7 +22,6 @@ export default class EditStudent extends Component {
 
   render() {
     const student = this.state.student
-    console.log('In editStud render!', 'this.state.student:', student)
     return (
       <div >
         <h2>Editing Student: {student.name}</h2>

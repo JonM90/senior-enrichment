@@ -12,11 +12,8 @@ export default class AddCampus extends Component {
 
   addCampus(newCamp) {
     axios.post('/api/campuses/addCampus', newCamp)
-    .then(res => {
-      return res.data;
-    })
+    .then(res => res.data)
     .then( camp => {
-      console.log('in front end camp:', camp);
       this.props.history.push(`/campuses/${camp.id}`)
     })
   }
@@ -33,7 +30,6 @@ export default class AddCampus extends Component {
   }
 
   render() {
-    console.log('In render:', 'this.props:', this.props, 'this.state:', this.state)
     return (
       <div >
         <form onSubmit={this.handleSubmit} onChange={this.handleChange}>

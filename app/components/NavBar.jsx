@@ -15,7 +15,7 @@ const NavBar = () => {
         <h2><Link to="/students">Students</Link></h2>
         </div>
         <div className="flex flex1 align-self-center margin-zero-auto">
-          <h2><Link to="/assign">Assign</Link></h2>
+          <h2><Link to="/assign">Assign/Transfer</Link></h2>
         </div>
         <hr />
       </nav>

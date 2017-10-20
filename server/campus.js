@@ -4,7 +4,6 @@ const Campus = require('../db/models/campus');
 const Student = require('../db/models/student');
 
 router.post('/addCampus', (req, res, next) => {
-  console.log('backend.POST to /addCampus, req.body', req.body);
   Campus.create(req.body)
   .then(data => {
     console.log('data:', data)
@@ -27,10 +26,6 @@ router.param('campusId', (req, res, next, id) => {
 });
 
 router.put('/:campusId/edit', (req, res, next) => {
-  console.log('.PUT /:campusId/edit req.campus.name', req.campus.name)
-
-  console.log('the OG:', req.campus.name, 'the edit req.body:', req.body)
-
   req.campus.update(req.body)
   .then(data => {
     console.log('Updated data on server-side:', data)
@@ -40,7 +35,6 @@ router.put('/:campusId/edit', (req, res, next) => {
     console.log('doubt this is anything:', el)
     res.json(req.campus);
   })
-  //res.json(req.campus);
 })
 
 router.route('/:campusId')

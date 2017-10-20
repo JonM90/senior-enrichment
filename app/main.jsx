@@ -6,12 +6,6 @@ import { Provider } from 'react-redux'
 import store from './store'
 import Root from './components/Root'
 import Main from './components/Main'
-//{
-//<Provider store={store}>
-// <Main />
-// <Root/>
-// </Provider>
-//}
 
 render(
   <Main />,

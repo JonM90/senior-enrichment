@@ -3,7 +3,6 @@ const router = new express.Router();
 const Student = require('../db/models/student');
 
 router.post('/addStudent', (req, res, next) => {
-  console.log('backend.POST to /addStudent, req.body', req.body);
   Student.create(req.body)
   .then(data => {
     console.log('data:', data)
@@ -13,10 +12,10 @@ router.post('/addStudent', (req, res, next) => {
 })
 
 router.param('studentId', (req, res, next, id) => {
-  //const studentId = +req.params.studentId;
-  console.log('id', id, 'typeof id paramter:', typeof id)
+  //const Id = +req.params.studentId;
+  console.log('passed id', id, 'typeof id parameter:', typeof id)
 
-  Student.findById(id)
+  Student.findById(+id)
   .then(student => {
     req.student = student
     console.log('found a stud! req.student:', req.student)
@@ -26,10 +25,6 @@ router.param('studentId', (req, res, next, id) => {
 });
 
 router.put('/:studentId/edit', (req, res, next) => {
-  console.log('.PUT /:studentId/edit req.student.name', req.student.name)
-
-  console.log('the OG:', req.student.name, 'the edit: req.body:', req.body)
-
   req.student.update(req.body)
   .then(data => {
     console.log('Updated data on server-side:', data)
@@ -60,8 +55,6 @@ router.route('/:studentId')
   res.json(req.student);
 })
 .delete( (req, res, next) => {
-  //const studentId = +req.params.studentId;
-  console.log('router.DELETE for /:studentId req.student.name', req.student.name)
   req.student.destroy()
   .then( data => {
     console.log('destroying data:', data, 'RIP req.student.name:', req.student.name);
