@@ -57,21 +57,6 @@ const students = roster.map( (stu, idx) => {
 
 //const id = () => Math.round(Math.random() * (students.length - 1)) + 1;
 
-// const messages = [
-//   { authorId: id(), content: 'I like React!', channelId: 1 },
-//   { authorId: id(), content: 'I like Redux!', channelId: 1 },
-//   { authorId: id(), content: 'I like React-Redux!', channelId: 1 },
-//   { authorId: id(), content: 'I like writing web apps!', channelId: 2 },
-//   { authorId: id(), content: 'You should learn JavaScript!', channelId: 2 },
-//   { authorId: id(), content: 'JavaScript is pretty great!', channelId: 2 },
-//   { authorId: id(), content: 'Dogs are great!', channelId: 3 },
-//   { authorId: id(), content: 'Cats are also great!', channelId: 3 },
-//   { authorId: id(), content: 'Why must we fight so?', channelId: 3 },
-//   { authorId: id(), content: 'I want to get tacos!', channelId: 4 },
-//   { authorId: id(), content: 'I want to get salad!', channelId: 4 },
-//   { authorId: id(), content: 'I want a taco salad!', channelId: 4 }
-// ];
-
 const seed = () =>
   Promise.all(campuses.map(campus =>
     Campus.create(campus))
@@ -81,11 +66,6 @@ const seed = () =>
     Student.create(student))
   )
 )
-  // .then(() =>
-  // Promise.all(messages.map(message =>
-  //   Message.create(message))
-  // )
-//);
 
 const main = () => {
   console.log('Syncing db...');

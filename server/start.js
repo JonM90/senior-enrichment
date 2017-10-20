@@ -20,8 +20,9 @@ module.exports = app
   .use('/api', require('./api')) // Serve our api
   .use((req, res, next) =>
     path.extname(req.path).length > 0 ?
-      res.status(404).send('Not found') :
-      next())
+    res.status(404).send('Not found') :
+    next()
+  )
   .get('/*', (_, res) => res.sendFile(resolve(__dirname, '..', 'public', 'index.html'))) // Send index.html for any other requests.
   .use(function (err, req, res, next) {
     console.error(err, typeof next);

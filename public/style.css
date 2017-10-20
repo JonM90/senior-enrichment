@@ -1,0 +1,76 @@
+.flex {
+  display: flex;
+}
+
+.flex1 {
+  flex-grow: 1 1 auto;
+}
+
+.flex-grow1 {
+  flex-grow: 1;
+}
+
+.flex-basis-auto {
+  flex-basis: auto;
+}
+
+.justify-start {
+  justify-content: flex-start;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-evenly {
+  justify-content: space-evenly;
+}
+
+.justify-end {
+  justify-content: flex-end;
+}
+
+.align-self-center {
+  align-self: center;
+}
+
+.align-content-center {
+  align-content: center;
+}
+
+.dir-col {
+  flex-direction: column;
+}
+
+.margin-zero-auto {
+  margin: 0 auto;
+}
+
+.padding-zero-auto {
+  padding: 0 auto;
+}
+
+.width-full {
+  width: 100vw;
+}
+
+.space-blue {
+  background-color: rgba(0, 3, 121, 0.54);
+}
+
+.space-green {
+  color: rgba(0, 160, 75, 0.54);
+}
+
+header {
+  background-color: rgba(162, 3, 45, 0.69);
+}
+
+#main {
+  color: rgba(32, 203, 189, 0.54);
+  background-color: rgba(2, 10, 21, 0.60);
+}
+
+.a {
+  text-decoration: none;
+}
